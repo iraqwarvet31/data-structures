@@ -19,4 +19,8 @@ describe('hashTable', function() {
     expect(hashTable.retrieve("beau")).to.equal("person");
     expect(hashTable.retrieve("rex")).to.equal("dinosour");
   });
+
+  // it("Should overwrite values that have the same key", function() {
+
+  // })
 })
