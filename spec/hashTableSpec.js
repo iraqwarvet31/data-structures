@@ -20,7 +20,9 @@ describe('hashTable', function() {
     expect(hashTable.retrieve("rex")).to.equal("dinosour");
   });
 
-  // it("Should overwrite values that have the same key", function() {
-
-  // })
+  it("Should overwrite values that have the same key", function() {
+    hashTable.insert("rex", "cat");
+    hashTable.insert("rex", "dinosour");
+    expect(hashTable.retrieve("rex")).to.equal("dinosour");
+  })
 })
