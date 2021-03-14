@@ -12,4 +12,11 @@ describe('hashTable', function() {
     expect(hashTable.remove).to.be.a("function");
     expect(hashTable.retrieve).to.be.a("function");
   });
+
+  it("Should store values that were inserted", function() {
+    hashTable.insert("beau", "person");
+    hashTable.insert("fido", "dog");
+    expect(hashTable.retrieve("beau")).to.equal("person");
+    expect(hashTable.retrieve("rex")).to.equal("dinosour");
+  });
 })
