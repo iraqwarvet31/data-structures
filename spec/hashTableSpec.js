@@ -32,4 +32,25 @@ describe('hashTable', function() {
     hashTable.remove("tux");
     expect(hashTable.retrieve("tux")).to.equal(undefined);
   })
+
+  it("Should handle collisions", function() {
+    hashTable.insert("rex", "dinosour");
+    hashTable.insert("beau", "person");
+    expect(hashTable.retrieve("rex")).to.equal("dinosour");
+  })
+
+  it("Storage should double in size when becoming 3/4 full", function() {
+    hashTable.insert("nemo", "fish");
+    hashTable.insert("coconut", "cat");
+    hashTable.insert("milo", "dog");
+    hashTable.insert("fido", "dog");
+    hashTable.insert("araceli", "human");
+    hashTable.insert("Leonardo", "turtle");
+    hashTable.insert("Splinter", "rat");
+    expect(hashTable._storage.length).to.equal(16);
+  })
 })
+
+
+
+
