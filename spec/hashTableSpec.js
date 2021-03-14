@@ -25,4 +25,11 @@ describe('hashTable', function() {
     hashTable.insert("rex", "dinosour");
     expect(hashTable.retrieve("rex")).to.equal("dinosour");
   })
+
+  it("Should not contain values that were removed", function() {
+    hashTable.insert("tux", "penguin");
+    hashTable.insert("rex", "dinosour");
+    hashTable.remove("tux");
+    expect(hashTable.retrieve("tux")).to.equal(undefined);
+  })
 })
