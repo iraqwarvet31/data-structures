@@ -19,9 +19,4 @@ describe('hashTable', function() {
     expect(hashTable.retrieve("beau")).to.equal("person");
     expect(hashTable.retrieve("rex")).to.equal("dinosour");
   });
-
-  it("Should not have duplicate keys", function() {
-    hashTable.insert("fido", "person");
-    hashTable.insert("")
-  })
 })
