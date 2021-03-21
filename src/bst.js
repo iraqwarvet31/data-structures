@@ -5,12 +5,12 @@ var BinarySearchTree = function() {
 var Node = function(data) {
   this._data = data;
   this._left = null;
-  this._right - null;
+  this._right = null;
 }
 
-BinarySearchTree.prototype.insert(data) {
-  if (this.)
-}
+// BinarySearchTree.prototype.insert(data) {
+//   if (this.)
+// }
 /*
 binarySearchTree = {
   root: {

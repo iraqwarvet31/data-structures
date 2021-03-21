@@ -14,11 +14,17 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.remove).to.be.a("function");
   });
 
-  it('BinarySearchTree should have _data, _left, and _right properties', function() {
-    expect(binarySearchTree).to.have.property('_data');
-    expect(binarySearchTree).to.have.property('_left');
-    expect(binarySearchTree).to.have.property('_right');
-  })
+  it('BinarySearchTree should have a _root property', function() {
+    expect(binarySearchTree).to.have.property('_root');
+  });
+
+  it('Node should have _data, _left, and _right properties', function() {
+    var node = new Node(7);
+
+    expect(node).to.have.property('_data');
+    expect(node).to.have.property('_left');
+    expect(node).to.have.property('_right');
+  });
 
   it('Should insert node to correct location of binary search tree', function() {
     binarySearchTree.insert(11);
