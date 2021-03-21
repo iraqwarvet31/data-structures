@@ -4,7 +4,8 @@ describe('binarySearchTree', function() {
   var expect = chai.expect;
 
   beforeEach(function() {
-    binarySearchTree = new BinarySearchTree(5);
+    binarySearchTree = new BinarySearchTree();
+    binarySearchTree._root = new Node(5);
   });
 
   it('Should have methods "insert", "search", "contains", "remove"', function() {
