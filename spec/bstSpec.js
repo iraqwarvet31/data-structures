@@ -1,6 +1,8 @@
 describe('binarySearchTree', function() {
   var binarySearchTree;
 
+  var expect = chai.expect;
+
   beforeEach(function() {
     binarySearchTree = new BinarySearchTree(5);
   });
