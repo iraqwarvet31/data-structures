@@ -5,7 +5,6 @@ describe('binarySearchTree', function() {
 
   beforeEach(function() {
     binarySearchTree = new BinarySearchTree();
-    binarySearchTree._root = new Node(5);
   });
 
   it('Should have methods "insert", "search", "contains", "remove"', function() {
