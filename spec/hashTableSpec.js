@@ -38,9 +38,8 @@ describe("hashTable", function() {
 
   it("Should not contain values that were removed", function() {
     hashTable.insert("tux", "penguin");
-    hashTable.insert("rex", "dinosour");
     hashTable.remove("tux");
-    expect(hashTable.retrieve("tux")).to.equal(undefined);
+    expect(hashTable.retrieve("tux")).to.equal(null);
   });
 
   it("Should handle collisions", function () {
@@ -58,6 +57,14 @@ describe("hashTable", function() {
 
   it("Storage should 1/2 when needed", function() {
     buckets.forEach(bucket => hashTable.insert(bucket[0], bucket[1]))
-    buckets.forEach(bucket => hashTable.remove(bucket[0]));
+    hashTable.remove("nemo");
+    hashTable.remove("cocunut");
+    hashTable.remove("milo");
+    hashTable.remove("fido");
+    hashTable.remove("araceli");
+    hashTable.remove("Leonardo");
+    hashTable.remove("Splinter");
+    hashTable.remove("tweety");
+    expect(hashTable._storage.length).to.equal(2);
   })
 });

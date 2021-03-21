@@ -36,17 +36,39 @@ describe("linkedList", function () {
 
   it("insertFirst should add a new value to the beginning of the linkedList", function() {
     linkedList.insertFirst(20);
-    expect(linkedList._head).to.equal(20);
+    linkedList.insertFirst(25);
+    linkedList.insertFirst(4);
+    expect(linkedList._size).to.equal(3);
+    expect(linkedList._head._data).to.equal(4);
   });
 
   it("insertLast should add new value to the end of the linkedList", function() {
     linkedList.insertLast(7);
-    expect(linkedList._tail).to.equal(7);
+    linkedList.insertLast(8);
+    linkedList.insertLast(10);
+    linkedList.insertLast(65);
+    expect(linkedList.getIndex(65)).to.equal(3);
+  });
+
+  it('getIndex should return index of given value', function() {
+    linkedList.insertFirst(20);
+    linkedList.insertLast(100);
+    expect(linkedList.getIndex(100)).to.equal(1);
+  });
+
+  it('insertAt should return null if inserting a value outside the index range', function() {
+    linkedList.insertFirst(20);
+    linkedList.insertLast(330);
+    console.log(linkedList._size)
+    expect(linkedList.insertAt(20, 3)).to.equal(false);
   });
 
   it('insertAt should add a value to the specified index', function() {
-    linkedList.insertAt(50, 3);
-    expect(linkedList.getIndex(3)).to.equal(50);
+    linkedList.insertLast(5);
+    linkedList.insertLast(6);
+    linkedList.insertLast(22);
+    linkedList.insertAt(100, 1);
+    expect(linkedList.getIndex(100)).to.equal(1);
   });
 
   it('getAt should return value at given index', function() {
@@ -54,12 +76,6 @@ describe("linkedList", function () {
     linkedList.insertFirst(15);
     linkedList.insertFirst(3);
     expect(linkedList.getAt(1)).to.equal(15);
-  });
-
-  it('getIndex should return index of given value', function() {
-    linkedList.insertFirst(20);
-    linkedList.insertLast(100);
-    expect(linkedList.getIndex(100)).to.equal(1);
   });
 
   it('contains should return true if given value is in linkedList', function() {
@@ -79,3 +95,13 @@ describe("linkedList", function () {
     expect(linkedList.contains(33)).to.equal(false);
   });
 });
+
+
+/*
+var list = new LinkedList();
+list.insertLast(23);
+list.insertLast(2);
+list.insertLast(55);
+list.insertLast(43);
+list.printList();
+*/
