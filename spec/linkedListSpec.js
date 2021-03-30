@@ -1,69 +1,67 @@
 describe("linkedList", function () {
   var linkedList;
   var expect = chai.expect;
+  var methods = [];
   beforeEach(function () {
     linkedList = new LinkedList();
   });
 
-  it("LinkedList should have a head and size property", function() {
+  it("LinkedList should have a head and size property", function () {
     expect(linkedList).to.have.property("_head");
     expect(linkedList).to.have.property("_size");
   });
 
-  it("Node should have a data and next property", function() {
+  it("Node should have a data and next property", function () {
     var node = new Node(3);
     expect(node).to.have.property("_data");
     expect(node).to.have.property("_next");
   });
 
-  it('Should have methods "insertFirst", "insertLast", "insertAt"', function() {
-    expect(linkedList.insertFirst).to.be.a("function");
-    expect(linkedList.insertLast).to.be.a("function");
-    expect(linkedList.insertAt).to.be.a("function");
+  it(`Should have methods "insertFirst", "insertLast",
+      "getIndex", "insertAt", "contains", "getAt"`,
+    function () {
+      expect(linkedList.insertFirst).to.be.a("function");
+      expect(linkedList.insertLast).to.be.a("function");
+      expect(linkedList.getIndex).to.be.a("function");
+      expect(linkedList.insertAt).to.be.a("function");
+      expect(linkedList.contains).to.be.a("function");
   });
 
-  it('Should have methods "getAt", "getIndex, "contains"', function() {
-    expect(linkedList.getAt).to.be.a("function");
-    expect(linkedList.getIndex).to.be.a("function");
-    expect(linkedList.contains).to.be.a("function");
+  it(`insertFirst should add a new value
+      to the beginning of the linkedList`,
+    function () {
+        linkedList.insertFirst(20);
+        linkedList.insertFirst(25);
+        linkedList.insertFirst(4);
+        expect(linkedList._size).to.equal(3);
+        expect(linkedList._head._data).to.equal(4);
   });
 
-  it('Should have methods "removeAt", "clearList", "printList"', function() {
-    expect(linkedList.removeAt).to.be.a("function");
-    expect(linkedList.clearList).to.be.a("function");
-    expect(linkedList.printList).to.be.a("function");
+  it("insertLast should add new value to the end of the linkedList",
+    function () {
+      linkedList.insertLast(7);
+      linkedList.insertLast(8);
+      linkedList.insertLast(10);
+      linkedList.insertLast(65);
+      expect(linkedList.getIndex(65)).to.equal(3);
   });
 
-  it("insertFirst should add a new value to the beginning of the linkedList", function() {
-    linkedList.insertFirst(20);
-    linkedList.insertFirst(25);
-    linkedList.insertFirst(4);
-    expect(linkedList._size).to.equal(3);
-    expect(linkedList._head._data).to.equal(4);
-  });
-
-  it("insertLast should add new value to the end of the linkedList", function() {
-    linkedList.insertLast(7);
-    linkedList.insertLast(8);
-    linkedList.insertLast(10);
-    linkedList.insertLast(65);
-    expect(linkedList.getIndex(65)).to.equal(3);
-  });
-
-  it('getIndex should return index of given value', function() {
+  it("getIndex should return index of given value", function () {
     linkedList.insertFirst(20);
     linkedList.insertLast(100);
     expect(linkedList.getIndex(100)).to.equal(1);
   });
 
-  it('insertAt should return null if inserting a value outside the index range', function() {
-    linkedList.insertFirst(20);
-    linkedList.insertLast(330);
-    console.log(linkedList._size)
-    expect(linkedList.insertAt(20, 3)).to.equal(false);
+  it(`insertAt should return null if inserting
+      a value outside the index range`,
+    function () {
+      linkedList.insertFirst(20);
+      linkedList.insertLast(330);
+      console.log(linkedList._size);
+      expect(linkedList.insertAt(20, 3)).to.equal(false);
   });
 
-  it('insertAt should add a value to the specified index', function() {
+  it("insertAt should add a value to the specified index", function () {
     linkedList.insertLast(5);
     linkedList.insertLast(6);
     linkedList.insertLast(22);
@@ -71,31 +69,42 @@ describe("linkedList", function () {
     expect(linkedList.getIndex(100)).to.equal(1);
   });
 
-  it('getAt should return value at given index', function() {
+  it("getAt should return value at given index", function () {
     linkedList.insertFirst(2);
     linkedList.insertFirst(15);
     linkedList.insertFirst(3);
     expect(linkedList.getAt(1)).to.equal(15);
   });
 
-  it('contains should return true if given value is in linkedList', function() {
-    linkedList.insertFirst(4);
-    linkedList.insertLast(20);
-    expect(linkedList.contains(4)).to.equal(true);
+  it("contains should return true if given value is in linkedList",
+    function () {
+      linkedList.insertFirst(4);
+      linkedList.insertLast(20);
+      expect(linkedList.contains(4)).to.equal(true);
   });
 
-  it('contains should return false if given value is not in linkedList', function() {
-    linkedList.insertFirst(96);
-    expect(linkedList.contains(3)).to.equal(false);
+  it("contains should return false if given value is not in linkedList",
+    function () {
+      linkedList.insertFirst(96);
+      expect(linkedList.contains(3)).to.equal(false);
   });
 
-  it('Should remove given value from linkedList', function() {
+  it("Should remove given value from linkedList", function () {
     linkedList.insertFirst(33);
     linkedList.removeAt(33, 0);
     expect(linkedList.contains(33)).to.equal(false);
   });
-});
 
+  it('Should have methods "getAt", "contains"', function () {
+    expect(linkedList.getAt).to.be.a("function");
+  });
+
+  it('Should have methods "removeAt", "clearList", "printList"', function () {
+    expect(linkedList.removeAt).to.be.a("function");
+    expect(linkedList.clearList).to.be.a("function");
+    expect(linkedList.printList).to.be.a("function");
+  });
+});
 
 /*
 var list = new LinkedList();
