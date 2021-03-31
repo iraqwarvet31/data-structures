@@ -23,6 +23,7 @@ describe("linkedList", function () {
       expect(linkedList.insertFirst).to.be.a("function");
       expect(linkedList.insertLast).to.be.a("function");
       expect(linkedList.getIndex).to.be.a("function");
+      expect(linkedList.getAt).to.be.a("function");
       expect(linkedList.insertAt).to.be.a("function");
       expect(linkedList.contains).to.be.a("function");
   });
@@ -81,49 +82,49 @@ describe("linkedList", function () {
     expect(linkedList.getIndex(100)).to.equal(2);
   });
 
-  //  it(`insertAt should return null if inserting
-  //     a value outside the index range`,
-  //   function () {
-  //     linkedList.insertFirst(20);
-  //     linkedList.insertLast(330);
-  //     expect(linkedList.insertAt(20, 3)).to.equal(false);
-  // });
+   it(`insertAt should return null if inserting
+      a value outside the index range`,
+    function () {
+      linkedList.insertFirst(20);
+      linkedList.insertLast(330);
+      expect(linkedList.insertAt(20, 3)).to.equal(null);
+  });
 
-  // it("getAt should return value at given index", function () {
-  //   linkedList.insertFirst(2);
-  //   linkedList.insertFirst(15);
-  //   linkedList.insertFirst(3);
-  //   expect(linkedList.getAt(1)).to.equal(15);
-  // });
+  it("getAt should return value at given index", function () {
+    linkedList.insertFirst(2);
+    linkedList.insertFirst(15);
+    linkedList.insertFirst(3);
+    expect(linkedList.getAt(1)).to.equal(15);
+  });
 
-  // it("contains should return true if given value is in linkedList",
-  //   function () {
-  //     linkedList.insertFirst(4);
-  //     linkedList.insertLast(20);
-  //     expect(linkedList.contains(4)).to.equal(true);
-  // });
+  it("contains should return true if given value is in linkedList",
+    function () {
+      linkedList.insertFirst(4);
+      linkedList.insertLast(20);
+      expect(linkedList.contains(4)).to.equal(true);
+  });
 
-  // it("contains should return false if given value is not in linkedList",
-  //   function () {
-  //     linkedList.insertFirst(96);
-  //     expect(linkedList.contains(3)).to.equal(false);
-  // });
+  it("contains should return false if given value is not in linkedList",
+    function () {
+      linkedList.insertFirst(96);
+      expect(linkedList.contains(3)).to.equal(false);
+  });
 
-  // it("Should remove given value from linkedList", function () {
-  //   linkedList.insertFirst(33);
-  //   linkedList.removeAt(33, 0);
-  //   expect(linkedList.contains(33)).to.equal(false);
-  // });
+  it("Should remove given value from linkedList", function () {
+    linkedList.insertFirst(33);
+    linkedList.removeAt(33, 0);
+    expect(linkedList.contains(33)).to.equal(false);
+  });
 
-  // it('Should have methods "getAt", "contains"', function () {
-  //   expect(linkedList.getAt).to.be.a("function");
-  // });
+  it('Should have methods "getAt", "contains"', function () {
+    expect(linkedList.getAt).to.be.a("function");
+  });
 
-  // it('Should have methods "removeAt", "clearList", "printList"', function () {
-  //   expect(linkedList.removeAt).to.be.a("function");
-  //   expect(linkedList.clearList).to.be.a("function");
-  //   expect(linkedList.printList).to.be.a("function");
-  // });
+  it('Should have methods "removeAt", "clearList", "printList"', function () {
+    expect(linkedList.removeAt).to.be.a("function");
+    expect(linkedList.clearList).to.be.a("function");
+    expect(linkedList.printList).to.be.a("function");
+  });
 });
 
 /*
