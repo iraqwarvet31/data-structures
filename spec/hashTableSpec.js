@@ -18,6 +18,18 @@ describe("hashTable", function() {
     hashTable = new HashTable();
   });
 
+  it('HashTable constructor should have a _storage property as empty array', function() {
+    expect(hashTable._storage).to.be.an('array');
+  })
+
+  it('HashTable constructor should a _limit property set to 8', function() {
+    expect(hashTable._limit).to.be.equal(8);
+  })
+
+  it('HashTable constructor should have a _count property set to 0', function() {
+    expect(hashTable._count).to.be.equal(0);
+  })
+
   it('Should have "hash", "insert", "remove", "retrieve", and "resize"', function() {
     expect(hashTable.hash).to.be.a("function");
     expect(hashTable.insert).to.be.a("function");
@@ -39,7 +51,11 @@ describe("hashTable", function() {
   it("Should not contain values that were removed", function() {
     hashTable.insert("tux", "penguin");
     hashTable.remove("tux");
-    expect(hashTable.retrieve("tux")).to.equal(null);
+    hashTable.insert("kermit", "frog");
+    hashTable.remove("kermit");
+    console.log(hashTable)
+    expect(hashTable.retrieve("tux")).to.equal(undefined || null);
+    expect(hashTable.retrieve("kermit")).to.equal(undefined || null);
   });
 
   it("Should handle collisions", function () {

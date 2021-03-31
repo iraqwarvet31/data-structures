@@ -43,27 +43,51 @@ LinkedList.prototype.getIndex = function(data) {
 };
 
 LinkedList.prototype.insertAt = function(data, index) {
-  if (index > this._size) {
-    return false;
-  }
-
   if (index === 0) {
-    this.insertFirst(data);
-  } else {
-    var node = new Node(data);
-    var current = this._head;
-    var it = 0;
-    var previous;
-
-    while (it < index) {
-      it++;
-      previous = current;
-      current = current._next;
-    }
-    previous._next = node;
-    node._next = current;
+    return this.insertFirst(data);
   }
+
+  if (index > this._size) {
+    return null;
+  }
+
+  var current = this._head;
+  var node = new Node(data);
+  var previous = current;
+  var itr = 0;
+
+  while (itr < index - 1) {
+    itr++
+    previous = current._next;
+    current = previous._next;
+  }
+
+  node._next = current;
+  previous._next = node;
   this._size++;
+
+  console.log(this);
+  // if (index > this._size) {
+  //   return false;
+  // }
+
+  // if (index === 0) {
+  //   this.insertFirst(data);
+  // } else {
+  //   var node = new Node(data);
+  //   var current = this._head;
+  //   var it = 0;
+  //   var previous;
+
+  //   while (it < index) {
+  //     it++;
+  //     previous = current;
+  //     current = current._next;
+  //   }
+  //   previous._next = node;
+  //   node._next = current;
+  // }
+  // this._size++;
 };
 /*
  var list = {
