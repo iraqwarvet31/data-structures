@@ -1,7 +1,7 @@
 describe("linkedList", function () {
   var linkedList;
   var expect = chai.expect;
-  var methods = [];
+
   beforeEach(function () {
     linkedList = new LinkedList();
   });
@@ -137,8 +137,8 @@ describe("linkedList", function () {
     expect(linkedList.contains(20)).to.equal(false);
   });
 
-  it("remove should return null if data does not exist", function () {
-    expect(linkedList.remove(3)).to.equal(null);
+  it("remove should return -1 if data does not exist", function () {
+    expect(linkedList.remove(3)).to.equal(-1);
   });
 });
 

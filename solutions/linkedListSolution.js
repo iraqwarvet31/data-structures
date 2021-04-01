@@ -123,31 +123,24 @@ LinkedList.prototype.printList = function() {
 };
 
 LinkedList.prototype.remove = function(data) {
-  if (!this.contains(data)) {
-    return null;
-  }
+  var current = this._head;
+  var previous = null;
 
-  if (this._size === 1) {
-    this._head = null;
-    return;
-  }
-
-  var current = this._head._next;
-  var previous = this._head;
-  var index = this.getIndex(2);
-
-  var count = 0;
-
-  while (count !== index) {
+  while (current) {
     if (current._data === data) {
-      current = current._next;
-      break;
+      if (previous === null) {
+        this._head = current._next;
+      } else {
+        previous._next = current._next;
+      }
+      this._size--
+      return current._data;
     }
-    count++
+    previous = current;
     current = current._next;
-    previous = previous._next;
   }
-  previous._next = current;
+
+  return -1;
 };
 
 /*
