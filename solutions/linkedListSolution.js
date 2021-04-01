@@ -12,8 +12,6 @@ LinkedList.prototype.insertFirst = function(data) {
   var node = new Node(data, this._head);
   this._head = node;
   this._size++;
-
-  console.log(this);
 };
 
 LinkedList.prototype.insertLast = function(data) {
@@ -29,7 +27,6 @@ LinkedList.prototype.insertLast = function(data) {
 
   current._next = new Node(data);
   this._size++;
-  console.log(this);
 };
 
 LinkedList.prototype.getIndex = function(data) {
@@ -124,3 +121,46 @@ LinkedList.prototype.printList = function() {
 
   return str.trim();
 };
+
+LinkedList.prototype.remove = function(data) {
+  if (!this.contains(data)) {
+    return null;
+  }
+
+  if (this._size === 1) {
+    this._head = null;
+    return;
+  }
+
+  var current = this._head._next;
+  var previous = this._head;
+  var index = this.getIndex(2);
+
+  var count = 0;
+
+  while (count !== index) {
+    if (current._data === data) {
+      current = current._next;
+      break;
+    }
+    count++
+    current = current._next;
+    previous = previous._next;
+  }
+  previous._next = current;
+};
+
+/*
+LinkedList = {
+  head: {
+    data: 3,
+    next: {
+      data: 5,
+      next: {
+        data: 100,
+        next: null;
+      }
+    }
+  }
+}
+*/

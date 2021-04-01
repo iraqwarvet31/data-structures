@@ -124,9 +124,21 @@ describe("linkedList", function () {
   })
 
   it("Should remove given value from linkedList", function () {
-    linkedList.insertFirst(33);
-    linkedList.removeAt(33, 0);
-    expect(linkedList.contains(33)).to.equal(false);
+    linkedList.insertLast(20);
+    linkedList.insertLast(2);
+    linkedList.insertLast(96);
+    linkedList.remove(2)
+    expect(linkedList.contains(2)).to.equal(false);
+  });
+
+  it("Should remove given value from linkedList", function () {
+    linkedList.insertLast(20);
+    linkedList.remove(20)
+    expect(linkedList.contains(20)).to.equal(false);
+  });
+
+  it("remove should return null if data does not exist", function () {
+    expect(linkedList.remove(3)).to.equal(null);
   });
 });
 
