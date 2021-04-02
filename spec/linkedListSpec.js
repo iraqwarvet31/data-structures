@@ -18,7 +18,7 @@ describe("linkedList", function () {
   });
 
   it(`Should have methods "insertFirst", "insertLast",
-      "getIndex", "insertAt", "contains", "getAt"`,
+      "getIndex", "insertAt", "getAt", "contains"`,
     function () {
       expect(linkedList.insertFirst).to.be.a("function");
       expect(linkedList.insertLast).to.be.a("function");
@@ -53,6 +53,9 @@ describe("linkedList", function () {
     expect(linkedList.getIndex(100)).to.equal(1);
   });
 
+  it('getIndex should return -1 if value doesn\'t exist', function() {
+    expect(linkedList.getIndex(32)).to.equal(-1);
+  })
 
   it("insertAt should add a value to the specified index", function () {
     linkedList.insertLast(5);
@@ -60,10 +63,6 @@ describe("linkedList", function () {
     linkedList.insertLast(22);
     linkedList.insertAt(100, 1);
     expect(linkedList.getIndex(100)).to.equal(1);
-  });
-
-  it("insertAt should return false if attempting to add to an empty list", function () {
-    expect(linkedList.insertAt(321, 2)).to.equal(null);
   });
 
   it("insertAt should insert value to at index 0 of linkedList", function () {
@@ -98,6 +97,10 @@ describe("linkedList", function () {
     expect(linkedList.getAt(0)).to.equal(3);
   });
 
+  it('getAt should return null if value doesn\'t exist', function () {
+    expect(linkedList.getAt(2)).to.equal(null);
+  })
+
   it("contains should return true if given value is in linkedList",
     function () {
       linkedList.insertFirst(4);
@@ -111,7 +114,7 @@ describe("linkedList", function () {
       expect(linkedList.contains(3)).to.equal(false);
   });
 
-  it('Should have methods "remove", "printList"', function () {
+  it('Should have methods, "printList", "remove"', function () {
     expect(linkedList.remove).to.be.a("function");
     expect(linkedList.printList).to.be.a("function");
   });

@@ -1,93 +1,85 @@
 var LinkedList = function() {
   this._head = null;
   this._size = 0;
-};
+}
 
 var Node = function(data, next = null) {
   this._data = data;
   this._next = next;
-};
+}
 
 LinkedList.prototype.insertFirst = function(data) {
-  var node = new Node(data, this._head);
-  this._head = node;
+  this._head = new Node(data, this._head)
   this._size++;
 };
 
 LinkedList.prototype.insertLast = function(data) {
-  var current = this._head;
+  var node = new Node(data);
 
   if (!this._head) {
-    return this.insertFirst(data);
+    this._head = node;
+    return;
   }
+
+  var current = this._head;
 
   while (current._next) {
     current = current._next;
   }
 
-  current._next = new Node(data);
+  current._next = node;
   this._size++;
 };
 
 LinkedList.prototype.getIndex = function(data) {
   var current = this._head;
-
-  if (!current) {
-    return null;
-  }
-
   var index = 0;
 
   while (current) {
     if (current._data === data) {
       return index;
-    } else {
-      current = current._next;
-      index++;
     }
+    index++
+    current = current._next;
   }
-  return null;
+
+  return -1;
 };
 
 LinkedList.prototype.insertAt = function(data, index) {
-  if (index === 0) {
-    this.insertFirst(data);
-  }
-
-  if (index > this._size) {
-    return null;
-  }
-
+  var current = this._head;
   var node = new Node(data);
-  var current = this._head._next;
-  var previous = this._head;
-  var count = 0;
+  var previous = null;
+  var itr = 0;
 
-  while (count < index - 1) {
-    count++
+  while (current) {
+    if (itr === index) {
+      if (previous === null) {
+        this._head = node;
+      } else {
+        previous._next = node;
+      }
+      node._next = current;
+      this._size++
+      return;
+    }
+    itr++
+    previous = current;
     current = current._next;
-    previous = previous._next;
   }
 
-  previous._next = node;
-  node._next = current;
-  this._size++
-  return this;
+  return null;
 };
 
 LinkedList.prototype.getAt = function(index) {
-  if (index > this._size) {
-    return null;
-  }
-
   var current = this._head;
-  var count = 0;
+  var itr = 0;
 
   while (current) {
-    if (index === count) {
+    if (itr === index) {
       return current._data;
     }
-    count++
+    itr++
     current = current._next;
   }
 
@@ -97,16 +89,13 @@ LinkedList.prototype.getAt = function(index) {
 LinkedList.prototype.contains = function(data) {
   var current = this._head;
 
-  if (!current) {
-    return false;
-  }
-
   while (current) {
     if (current._data === data) {
       return true;
     }
     current = current._next;
   }
+
   return false;
 };
 
@@ -115,7 +104,7 @@ LinkedList.prototype.printList = function() {
   var current = this._head;
 
   while (current) {
-    str += `${current._data} --> `
+    str += `${current._data} --> `;
     current = current._next;
   }
 
@@ -143,15 +132,19 @@ LinkedList.prototype.remove = function(data) {
   return -1;
 };
 
+
 /*
 LinkedList = {
   head: {
-    data: 3,
+    data: 7,
     next: {
-      data: 5,
+      data: 8,
       next: {
-        data: 100,
-        next: null;
+        data: 10,
+        next: {
+          data: 65,
+          next: null
+        }
       }
     }
   }
