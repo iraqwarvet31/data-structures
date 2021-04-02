@@ -33,6 +33,32 @@ BinarySearchTree.prototype.insert = function (data) {
   };
   insertNode(this._root, newNode);
   return this;
+
+  // SOLUTION 2 ***
+  // var node = new Node(data);
+
+  // if (!this._root) {
+  //   this._root = node;
+  //   return this;
+  // }
+
+  // var current = this._root;
+
+  // while (current) {
+  //   if (data < current._data) {
+  //     if (current._left === null) {
+  //       current._left = node;
+  //       return this;
+  //     }
+  //     current = current._left;
+  //   } else {
+  //     if (current._right === null) {
+  //       current._right = node;
+  //       return this;
+  //     }
+  //     current = current._right;
+  //   }
+  // }
 };
 
 BinarySearchTree.prototype.search = function (data) {

@@ -7,12 +7,6 @@ describe('binarySearchTree', function() {
     binarySearchTree = new BinarySearchTree();
   });
 
-  it('Should have methods "insert", "search", "contains", "remove"', function() {
-    expect(binarySearchTree.insert).to.be.a("function");
-    expect(binarySearchTree.search).to.be.a("function");
-    expect(binarySearchTree.contains).to.be.a("function");
-    expect(binarySearchTree.remove).to.be.a("function");
-  });
 
   it('BinarySearchTree should have a _root property', function() {
     expect(binarySearchTree).to.have.property('_root');
@@ -25,6 +19,18 @@ describe('binarySearchTree', function() {
     expect(node).to.have.property('_left');
     expect(node).to.have.property('_right');
   });
+
+  it('Should have methods "insert", "search", "contains", "remove"', function() {
+    expect(binarySearchTree.insert).to.be.a("function");
+    expect(binarySearchTree.search).to.be.a("function");
+    expect(binarySearchTree.contains).to.be.a("function");
+    expect(binarySearchTree.remove).to.be.a("function");
+  });
+
+  it('Should insert node into an empty binarySearchTree', function() {
+    binarySearchTree.insert(8);
+    expect(binarySearchTree._root._data).to.equal(8);
+  })
 
   it('Should insert node to correct location of binary search tree', function() {
     binarySearchTree.insert(11);
@@ -78,17 +84,17 @@ describe('binarySearchTree', function() {
     expect(arr).to.eql([11, 8, 5, 7, 12, 15]);
   });
 
-  // it('Should execute a function on every value via "breadthFirst"', function() {
-  //   var arr = [];
-  //   var pushAll = function(data) { arr.push(data) };
-  //   binarySearchTree.insert(12);
-  //   binarySearchTree.insert(9);
-  //   binarySearchTree.insert(5);
-  //   binarySearchTree.insert(10);
-  //   binarySearchTree.insert(92);
-  //   binarySearchTree.insert(33);
-  //   binarySearchTree.insert(150);
-  //   binarySearchTree.breadthFirst(pushAll);
-  //   expect(arr).to.eql([12, 9, 92, 5, 10, 33, 150])
-  // })
+  it('Should execute a function on every value via "breadthFirst"', function() {
+    var arr = [];
+    var pushAll = function(data) { arr.push(data) };
+    binarySearchTree.insert(12);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(92);
+    binarySearchTree.insert(33);
+    binarySearchTree.insert(150);
+    binarySearchTree.breadthFirst(pushAll);
+    expect(arr).to.eql([12, 9, 92, 5, 10, 33, 150])
+  })
 });
