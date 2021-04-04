@@ -40,12 +40,18 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree._root._left._left._data).to.equal(1);
   });
 
-  it('Should locate node with a given value', function() {
+  it('search should return the node with given value', function() {
     binarySearchTree.insert(12);
     binarySearchTree.insert(92);
     expect((binarySearchTree.search(12)._data)).to.equal(12);
     expect((binarySearchTree.search(92)._data)).to.equal(92);
   });
+
+  it('search should return -1 if node wasn\'t found', function() {
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(12);
+    expect((binarySearchTree.search(100))).to.equal(-1);
+  })
 
 
   it('Contains should return true if given value was found', function() {
@@ -54,17 +60,23 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.contains(2)).to.equal(true);
   });
 
-  it('Should remove a specified node', function() {
-    binarySearchTree.insert(50);
-    binarySearchTree.insert(15);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(25);
-    binarySearchTree.insert(17);
-    binarySearchTree.insert(29);
-    binarySearchTree.remove(15);
-
-    expect(binarySearchTree._root._left._data).to.equal(17);
+  it('Contains should return false if given value was not found', function() {
+    binarySearchTree.insert(101);
+    binarySearchTree.insert(2);
+    expect(binarySearchTree.contains(55)).to.equal(false);
   })
+
+  it('Should remove a specified node', function() {
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(14);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(4);
+    binarySearchTree.remove(3);
+    expect(binarySearchTree._root._left._data).to.equal(4);
+  })
+
 
   it('Should include methods breadthFirst and depthFirst', function() {
     expect(binarySearchTree.breadthFirst).to.be.a("function")
@@ -74,14 +86,14 @@ describe('binarySearchTree', function() {
   it('Should execute a function on every value via "depth-first', function() {
     var arr = [];
     var pushAll = function(data) { arr.push(data)};
-    binarySearchTree.insert(11);
-    binarySearchTree.insert(8);
-    binarySearchTree.insert(5);
-    binarySearchTree.insert(7);
-    binarySearchTree.insert(12);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(6);
     binarySearchTree.insert(15);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(20);
     binarySearchTree.depthFirst(pushAll);
-    expect(arr).to.eql([11, 8, 5, 7, 12, 15]);
+    expect(arr).to.eql([10, 6, 3, 8, 15, 20]);
   });
 
   it('Should execute a function on every value via "breadthFirst"', function() {

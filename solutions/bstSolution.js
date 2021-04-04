@@ -76,51 +76,40 @@ BinarySearchTree.prototype.search = function (data) {
 };
 
 BinarySearchTree.prototype.remove = function (data) {
-  const removeNode = (node, data) => {
-    if (!node) {
-      return null;
-    }
-
-    if (data === node._data) {
-      if (!node._left && !node._right) {
+  const removeNode = function(node, data) {
+      if (node == null) {
         return null;
       }
-
-      if (!node._left) {
-        return node._right;
-      }
-
-      if (!node._right) {
-        return node._left;
-      }
-
-      let temp = node._right;
-      let parent = null;
-      while (temp) {
-        if (!temp._left) {
-          break;
+      if (data == node._data) {
+        // node has no children
+        if (node._left == null && node._right == null) {
+          return null;
         }
-        parent = temp;
-        temp = temp._left;
-      }
-
-      node._data = temp._data;
-
-      if (!parent) {
-        node._right = temp._right;
-      } else if (!parent._left._right) {
-        parent._left = null;
+        // node has no left child
+        if (node._left == null) {
+          return node._right;
+        }
+        // node has no right child
+        if (node._right == null) {
+          return node._left;
+        }
+        // node has two children
+        var tempNode = node._right;
+        while (tempNode._left !== null) {
+          tempNode = tempNode._left;
+        }
+        node._data = tempNode._data;
+        node._right = removeNode(node._right, tempNode._data);
+        return node;
+      } else if (data < node._data) {
+        node._left = removeNode(node._left, data);
+        return node;
       } else {
-        parent._left = temp._right;
+        node._right = removeNode(node._right, data);
+        return node;
       }
-    } else if (data < node._data) {
-      node._left = removeNode(node._left, data);
-      return node;
     }
-    node._right = removeNode(node._right, data);
-    return node;
-  };
-  this._root = removeNode(this._root, data);
+    this._root = removeNode(this._root, data);
 };
 
 BinarySearchTree.prototype.contains = function (data) {
