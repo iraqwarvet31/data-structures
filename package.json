@@ -1,0 +1,21 @@
+{
+  "name": "data-structures",
+  "version": "1.0.0",
+  "description": "Implement data structures from sratch.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iraqwarvet31/data-structures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iraqwarvet31/data-structures/issues"
+  },
+  "homepage": "https://github.com/iraqwarvet31/data-structures#readme"
+}

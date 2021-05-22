@@ -57,13 +57,50 @@ Graph.prototype.removeVertex = function(vertex) {
   this.vertex.delete(vertex);
 };
 
+Graph.prototype.BFS = function(start) {
+
+  // Solution 1
+  const queue = [start];
+  const visited = [];
+
+  while (queue.length) {
+    visited.push(queue.shift());
+
+    let curr = visited[visited.length - 1];
+    let currEdges = this.vertex.get(curr);
+
+    currEdges.forEach(val => {
+      if (!(visited.includes(val)) && !(queue.includes(val))) {
+        queue.push(val);
+      }
+    })
+  }
+  return visited;
+}
+
+Graph.prototype.DFS = function(start) {
+
+}
+
 /*
-nodes = {
+GRAPH1 = {
   0: [1, 4],
   1: [0, 4, 3, 2],
   2: [1, 3],
-  3: [1, 4, 2],
-  4: [3, 0, 1]
+  3: [1, 2, 4],
+  4: [0, 1, 3]
 }
 
+GRAPH2 = {
+  1: [4, 2],
+  2: [1, 3, 5, 7, 8],
+  3: [4, 2, 10, 9],
+  4: [1, 3],
+  5: [6, 2, 7, 8],
+  6: [5],
+  7: [8, 2, 5],
+  8: [2, 5, 7],
+  9: [3],
+  10: [3]
+}
 */
