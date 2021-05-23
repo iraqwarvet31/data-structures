@@ -1,6 +1,6 @@
 describe('MinHeap', function() {
-  var minHeap;
-  var expect = chai.expect;
+  const expect = chai.expect;
+  let minHeap;
 
   beforeEach(function() {
     minHeap = new MinHeap();
