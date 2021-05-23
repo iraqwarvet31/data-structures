@@ -1,27 +1,27 @@
 describe('MinHeap', function() {
-  var maxHeap;
+  var minHeap;
   var expect = chai.expect;
 
   beforeEach(function() {
-    maxHeap = new MaxHeap();
+    minHeap = new MinHeap();
   })
 
   it('Has methods insert and remove', function() {
-    expect(maxHeap.insert).to.be.a('function');
-    expect(maxHeap.remove).to.be.a('function');
+    expect(minHeap.insert).to.be.a('function');
+    expect(minHeap.remove).to.be.a('function');
   })
 
   it('Inserts element to correct location in heap', function() {
-    maxHeap.insert(10);
-    maxHeap.insert(23);
-    maxHeap.insert(36);
-    maxHeap.insert(32);
-    maxHeap.insert(38);
-    maxHeap.insert(45);
-    maxHeap.insert(57);
-    expect(maxHeap.heap).deep.to.equal([null, 10, 23, 36, 32, 38, 45, 57])
-    maxHeap.insert(3);
-    expect(maxHeap.heap).deep.to.equal([null, 3, 10, 36, 23, 38, 45, 57, 32])
+    minHeap.insert(10);
+    minHeap.insert(23);
+    minHeap.insert(36);
+    minHeap.insert(32);
+    minHeap.insert(38);
+    minHeap.insert(45);
+    minHeap.insert(57);
+    expect(minHeap.heap).deep.to.equal([null, 10, 23, 36, 32, 38, 45, 57])
+    minHeap.insert(3);
+    expect(minHeap.heap).deep.to.equal([null, 3, 10, 36, 23, 38, 45, 57, 32])
   })
 })
 
