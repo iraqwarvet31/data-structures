@@ -4,12 +4,12 @@ describe('MinHeap', function() {
 
   beforeEach(function() {
     minHeap = new MinHeap();
-  })
+  });
 
   it('Has methods insert and remove', function() {
     expect(minHeap.insert).to.be.a('function');
     expect(minHeap.remove).to.be.a('function');
-  })
+  });
 
   it('Inserts element to correct location in heap', function() {
     minHeap.insert(10);
@@ -22,7 +22,11 @@ describe('MinHeap', function() {
     expect(minHeap.heap).deep.to.equal([null, 10, 23, 36, 32, 38, 45, 57])
     minHeap.insert(3);
     expect(minHeap.heap).deep.to.equal([null, 3, 10, 36, 23, 38, 45, 57, 32])
-  })
+  });
+
+  it('Removes element and reconstructs a min heap', function() {
+
+  });
 })
 
 /*
