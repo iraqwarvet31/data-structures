@@ -24,7 +24,7 @@ describe('MinHeap', function() {
     expect(minHeap.heap).deep.to.equal([null, 3, 10, 36, 23, 38, 45, 57, 32])
   });
 
-  it('Removes element and reconstructs a min heap', function() {
+  it('Removes minimum element and reconstructs a min heap', function() {
 
   });
 })
