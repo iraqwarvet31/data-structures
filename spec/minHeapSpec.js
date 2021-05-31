@@ -25,7 +25,15 @@ describe('MinHeap', function() {
   });
 
   it('Removes minimum element and reconstructs a min heap', function() {
-
+    minHeap.insert(10);
+    minHeap.insert(23);
+    minHeap.insert(36);
+    minHeap.insert(32);
+    minHeap.insert(38);
+    minHeap.insert(45);
+    minHeap.insert(57);
+    minHeap.removeMin();
+    expect(minHead.heap).deep.to.equal([null, 23, 32, 36, 57, 38, 45])
   });
 })
 
